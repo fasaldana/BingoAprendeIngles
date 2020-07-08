@@ -1,24 +1,13 @@
 package com.example.bingogameeng;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.Provider;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.bingogameeng.ElementsService;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/elements")
@@ -31,6 +20,11 @@ public class ElementController {
     @GetMapping("/")
     public List<Elements> read() {
         return service.readAll();
+    }
+
+    @GetMapping("/start")
+    public void start() {
+        service.writeFile();
     }
 
     @GetMapping("/{id}")
